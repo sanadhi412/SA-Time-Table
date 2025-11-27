@@ -305,6 +305,34 @@
             padding: 10px;
         }
     }
+
+    /* Style the weekends button */
+    body a button {
+        background: linear-gradient(135deg, #f97316, #f59e0b);
+        /* orange gradient */
+        color: white;
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 15px 35px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 15px rgba(245, 158, 11, 0.4);
+        margin-top: 30px;
+    }
+
+    /* Hover effect */
+    body a button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(245, 158, 11, 0.5);
+    }
+
+    /* Active/Click effect */
+    body a button:active {
+        transform: scale(0.98);
+        box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4);
+    }
 </style>
 
 <body>
@@ -481,6 +509,7 @@
             </ul>
         </div>
     </div>
+    <a href="weekends.html"><button>Weekends </button></a>
 </body>
 
 </html>
