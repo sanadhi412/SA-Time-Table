@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Study Schedule</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+
+        th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background-color: #f7fafc;
+        }
+
+        .time-col {
+            font-weight: 600;
+            color: #4a5568;
+            white-space: nowrap;
+            background-color: #f7fafc;
+        }
+
+        .work-day {
+            background-color: #fff5f5;
+        }
+
+        .off-day {
+            background-color: #f0fff4;
+            font-weight: 500;
+        }
+
+        .study-security {
+            color: #2b6cb0;
+            font-weight: 600;
+        }
+
+        .study-driving {
+            color: #c05621;
+            font-weight: 600;
+        }
+
+        .study-deployment {
+            color: #276749;
+            font-weight: 600;
+        }
+
+        .work {
+            color: #c53030;
+            font-weight: 600;
+        }
+
+        .test-day {
+            background: linear-gradient(135deg, #fef5e7 0%, #fdeaa8 100%);
+            font-weight: 700;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .summary-table {
+            background: linear-gradient(135deg, #e0e7ff 0%, #cffafe 100%);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .summary-table th {
+            background: #4c51bf;
+        }
+
+        .total-row {
+            background-color: #fef3c7;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .notes {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 5px solid #f59e0b;
+        }
+
+        .notes h2 {
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+
+        .notes ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .notes li {
+            padding: 8px 0;
+            color: #78350f;
+            font-weight: 500;
+        }
+
+        .notes li:before {
+            content: "✅ ";
+            margin-right: 10px;
+        }
+
+        .star {
+            color: #f59e0b;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th,
+            td {
+                padding: 8px 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📚 Weekly Study Schedule</h1>
+        <p class="subtitle">Monday to Saturday | Complete Time Table</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday (Work)</th>
+                        <th>Tuesday (OFF) <span class="star">⭐</span></th>
+                        <th>Wednesday (Work)</th>
+                        <th>Thursday (OFF) <span class="star">⭐</span></th>
+                        <th>Friday (Work)</th>
+                        <th>Saturday (Work)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time-col">6:45-7:00 AM</td>
+                        <td>Wake up</td>
+                        <td class="off-day">—</td>
+                        <td>Wake up</td>
+                        <td class="off-day">—</td>
+                        <td>Wake up</td>
+                        <td>Wake up</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">7:00-9:00 AM</td>
+                        <td><span class="study-security">Security+</span> (2h)</td>
+                        <td class="off-day">Wake up at 7am</td>
+                        <td><span class="study-security">Security+</span> (2h)</td>
+                        <td class="off-day">Wake up at 7am</td>
+                        <td><span class="study-security">Security+</span> (2h)</td>
+                        <td><span class="study-security">Security+</span> (2h)</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">8:00-10:30 AM</td>
+                        <td>—</td>
+                        <td class="off-day"><span class="study-security">Security+</span> (2.5h)</td>
+                        <td>—</td>
+                        <td class="off-day">Light breakfast + theory revision</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">9:00-10:00 AM</td>
+                        <td>Get ready + breakfast</td>
+                        <td class="off-day">—</td>
+                        <td>Get ready + breakfast</td>
+                        <td class="off-day">—</td>
+                        <td>Get ready + breakfast</td>
+                        <td>Get ready + breakfast</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">10:00 AM-12:00 PM</td>
+                        <td>Transport + <span class="study-driving">Driving Theory</span></td>
+                        <td class="off-day">—</td>
+                        <td>Transport + <span class="study-driving">Driving Theory</span></td>
+                        <td class="off-day">—</td>
+                        <td>Transport (rest/podcast)</td>
+                        <td>Transport (rest/review)</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">10:30-11:00 AM</td>
+                        <td>—</td>
+                        <td class="off-day">Break/breakfast</td>
+                        <td>—</td>
+                        <td class="off-day">—</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">11:00 AM-1:00 PM</td>
+                        <td>—</td>
+                        <td class="off-day"><span class="study-driving">Driving Theory Tests</span> (2h)</td>
+                        <td>—</td>
+                        <td class="test-day">🚗 DRIVING TEST 🚗</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">12:00-9:00 PM</td>
+                        <td class="work-day"><span class="work">WORK</span></td>
+                        <td class="off-day">—</td>
+                        <td class="work-day"><span class="work">WORK</span></td>
+                        <td class="off-day">—</td>
+                        <td class="work-day"><span class="work">WORK</span></td>
+                        <td class="work-day"><span class="work">WORK</span></td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">1:00-2:00 PM</td>
+                        <td>—</td>
+                        <td class="off-day">Lunch break</td>
+                        <td>—</td>
+                        <td class="off-day">Lunch & celebrate!</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">2:00-5:00 PM</td>
+                        <td>—</td>
+                        <td class="off-day"><span class="study-deployment">Deployment</span> (3h)</td>
+                        <td>—</td>
+                        <td class="off-day"><span class="study-security">Security+</span> (3h)</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">5:00-6:00 PM</td>
+                        <td>—</td>
+                        <td class="off-day">Rest/personal time</td>
+                        <td>—</td>
+                        <td class="off-day">Break</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">6:00-7:00 PM</td>
+                        <td>—</td>
+                        <td class="off-day">Dinner prep & eat</td>
+                        <td>—</td>
+                        <td class="off-day">—</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">7:00-9:00 PM</td>
+                        <td>—</td>
+                        <td class="off-day"><span class="study-driving">Driving Theory</span> (2h)</td>
+                        <td>—</td>
+                        <td class="off-day"><span class="study-deployment">Deployment</span> (3h)</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">9:00-10:30 PM</td>
+                        <td>Transport back</td>
+                        <td class="off-day">Relax & early sleep</td>
+                        <td>Transport back</td>
+                        <td class="off-day">Dinner, relax</td>
+                        <td>Transport back</td>
+                        <td>Transport back</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">10:30-11:30 PM</td>
+                        <td>Cooking & dinner</td>
+                        <td class="off-day">—</td>
+                        <td>Cooking & dinner</td>
+                        <td class="off-day">—</td>
+                        <td>Cooking & dinner</td>
+                        <td>Cooking & dinner</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">11:30 PM-12:30 AM</td>
+                        <td>Wind down + <span class="study-deployment">Deployment</span> (30min)</td>
+                        <td class="off-day">—</td>
+                        <td><span class="study-driving">Driving revision</span> (30min)</td>
+                        <td class="off-day">—</td>
+                        <td>Wind down + <span class="study-deployment">Deployment</span> (30min)</td>
+                        <td>Wind down + reading</td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">12:30 AM</td>
+                        <td>Sleep 💤</td>
+                        <td class="off-day">—</td>
+                        <td>Sleep 💤</td>
+                        <td class="off-day">Sleep 💤</td>
+                        <td>Sleep 💤</td>
+                        <td>Sleep 💤</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary-table">
+            <h2 style="margin-bottom: 20px; color: #1e40af;">📊 Weekly Study Hours Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time-col">Security+</td>
+                        <td>2h</td>
+                        <td>2.5h</td>
+                        <td>2h</td>
+                        <td>3h</td>
+                        <td>2h</td>
+                        <td>2h</td>
+                        <td><strong>13.5h</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">Driving Theory</td>
+                        <td>2.5h</td>
+                        <td>4h</td>
+                        <td>2.5h</td>
+                        <td>1h</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td><strong>10h</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="time-col">Deployment</td>
+                        <td>0.5h</td>
+                        <td>3h</td>
+                        <td>—</td>
+                        <td>3h</td>
+                        <td>0.5h</td>
+                        <td>—</td>
+                        <td><strong>7h</strong></td>
+                    </tr>
+                    <tr class="total-row">
+                        <td class="time-col">Daily Total</td>
+                        <td>5h</td>
+                        <td>9.5h</td>
+                        <td>4.5h</td>
+                        <td>7h</td>
+                        <td>2.5h</td>
+                        <td>2h</td>
+                        <td><strong>30.5h</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="notes">
+            <h2>🎯 Key Notes</h2>
+            <ul>
+                <li><strong>Tuesday & Thursday</strong> = Your intensive study days (OFF days)</li>
+                <li><strong>After Thursday's test</strong> = Redistribute 10 hours to Security+ & Deployment</li>
+                <li><strong>Transport time</strong> = Perfect for driving theory apps or Security+ podcasts</li>
+                <li><strong>Sleep</strong> = ~6 hours/night (protect this!)</li>
+                <li><strong>Sunday</strong> = Complete rest (not shown in table)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
